@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-names
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: shubham.com
+      http:
+        paths:
+          - path: /api/view(/|$)(.*)
+            backend:
+              serviceName: view-service
+              servicePort: 9090

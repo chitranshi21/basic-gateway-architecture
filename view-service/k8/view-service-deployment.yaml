@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: view-service
+  labels:
+    app: view-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: view-service
+  template:
+    metadata:
+      labels:
+        app: view-service
+    spec:
+      containers:
+        - name: view-service
+          image: docker.io/library/view-service:0.0.1-SNAPSHOT
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9090
